@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<h1>Edit Post</h1>
+<form action="" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        {% comment %} {%if messages%}
+            {%for msg in messages%}
+                {{msg}}
+                {%endfor%}
+
+        {%endif%} {% endcomment %}
+        <div class="col-4"></div>
+
+
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-info">Update</button>
+
+</form>
+
+{%endblock%}

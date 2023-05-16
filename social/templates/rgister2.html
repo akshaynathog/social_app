@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-color: #41c2cb;
+      }
+
+      button.signup_btn {
+        background-color: #41c2cb;
+        border-color: #41c2cb;
+      }
+      
+
+   </style>
+    </style>
+  </head>
+  <body>
+    <div class="container ">
+
+      <h1 style="color:#41c2cb;">Registration</h1>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <form action="" method="post">
+            {%csrf_token%} {{form.as_p}}
+            {% comment %} <input type="submit" value="Register" class="btn btn-primary" /> {% endcomment %}
+            <button class="signup_btn mb-3">Sign Up</button> </a>
+            <div>Already Have An Account? <a href="{%url 'signin'%}">Login</a>
+            </div>
+            
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

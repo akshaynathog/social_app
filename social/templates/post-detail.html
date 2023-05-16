@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+
+
+ <div class="col-md-10 col-lg-8 col-xl-7">
+    {% comment %} <h1 class="">{{request.user}}</h1> {% endcomment %}
+    <!-- Post preview-->
+    {% comment %} <div class="post-preview"> {% endcomment %}
+
+    <div class="">
+        <h2>Post detail page</h2>
+    </div>
+    <!-- Divider-->
+    <hr class="my-4" />
+
+    <!-- Post preview-->
+     <div class="polaroid text-capitalize">
+        
+             <h2 class="post_title capital">{{post.title}}</h2></a> 
+
+
+
+             {%if post.images%}
+             
+             <img class="post_img center_details_page" src="{{post.images.url}}" alt="">
+
+             {% endif %}
+
+
+
+        <p class="post-meta post_para">
+            Posted by
+            <a href="#!">{{post.user}}</a>
+            on {{post.created_date}}
+        </p>
+
+
+
+
+
+
+        <div>
+
+          <p class="ms-3">
+ 
+              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+                Add comments
+              </button>
+
+
+
+              <button class="btn btn-sm btn-info ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#commentlist{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample">
+                  View comments
+                </button>
+
+
+
+                <a href="{%url 'post-change' post.id%}" class="btn btn-sm btn-outline-primary">Edit</a>
+
+
+                {% comment %} <a href="{%url 'post-delete' post.id %}" class="btn btn-sm btn-outline-danger ms-1">Delete</a> {% endcomment %}
+
+
+
+            </p>
+
+            <div class="collapse" id="collapseExample{{ forloop.counter }}">
+              <div class="card card-body">
+                
+                  <form action="{%url 'add-comment' post.id%}" method="post">
+
+                      {%csrf_token%}
+                      <textarea name="comment" id="" cols="30" rows="3" class="form-control"></textarea>
+                      <input type="submit" value="Add" class="mt-2 btn btn-sm btn-success">
+                  </form>
+
+              </div>
+                
+            </div>
+
+            <div class="collapse" id="commentlist{{ forloop.counter }}">
+              <div class="card card-body">
+
+
+
+
+
+
+
+
+
+
+
+   
+    
+    
+
+
+
+
+                    <ul class="list-group">
+                 
+                  {%for com in post.fetch_comments%} 
+
+                  <li class="list-group-item">
+
+                    {{com.comment}}
+                    
+                      <div class="mt-2">
+    
+                        <a href="{%url 'upvote' com.id%}" class="btn btn-sm btn-success ">Like</a>
+                      
+                      
+    
+                        {% comment %} {%if com.comment==request.user%} {% endcomment %}
+                 
+                          {% comment %} <a href="{%url 'todo-delete' todo.id%}" class="btn btn-outline-danger">Delete</a> {% endcomment %}
+                      
+                      
+                      
+                      
+                          <a href="" class="btn btn-sm btn-outline-danger">Delete</a>
+
+                        
+    
+                            {{com.user}}
+                        {% comment %} {% endif %} {% endcomment %}
+                      
+    
+    
+    
+                        {{com.up_vote.all.count}}
+                        <span class="text-success">Likes</span>
+</div>
+                  </li>
+
+                  
+
+
+                  {%endfor%}
+
+                </ul>
+            </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr class="my-4" />
+    
+    <!-- Pager-->
+
+</div>
+{% endblock%}

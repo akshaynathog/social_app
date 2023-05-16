@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row polaroid">
+    <h3 class="mt-2">Profile Details</h3>
+    <hr>
+    <div class="col-4 text-capitalize">
+
+        <p > 
+            <h6>First Name</h6>
+            {{request.user.first_name}}
+        </p>
+
+    </div>
+
+
+    <div class="col-4 text-capitalize">
+
+        <p>
+            <h6>Last Name</h6>
+            {{request.user.last_name}}
+        </p>
+
+    </div>
+
+
+    <div class="col-4 ">
+
+    <p>
+            <h6>User name</h6>
+            {{request.user}}
+    </p>
+        </div>
+    <hr>
+
+    </div>
+    <hr class="my-4" />
+    <div class="row polaroid ">
+
+    <div class="col-4">
+    <p>
+            <h6>Email Id</h6>
+            {{request.user.email}}
+    </p>
+</div>
+
+
+
+<div class="col-4">
+    <p>
+            <h6>Join Date</h6>
+            {{request.user.date_joined}}
+    </p>
+</div>
+
+<div class="col-4">
+    <p>
+            <h6>Last Login</h6>
+            {{request.user.last_login}}
+    </p>
+</div>
+
+
+
+</div>
+
+
+
+{%endblock%}
